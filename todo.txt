@@ -1,0 +1,15 @@
+* monit node, nginx, mongo
+* http server response headers
+* gzip and cache css and js on ngixnx (etags)
+* get rid of /*globals comments*/
+
+* client
+  - show a list of all gathered headlines(ever) and navigate through them
+  - about page or section
+  - show the number of headlines gathered (live counter) since: fecha
+  - poner algo en el area del headline para cuando se acaba de cargar la
+    pagina y no hay encabezado
+
+* after
+  - translate headlines using google api-
+  

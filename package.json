@@ -1,0 +1,10 @@
+{
+    "name":"violence",
+    "version":"0.0.1",
+    "dependencies": {
+        "faye":"",
+        "jade":"",
+        "mongodb":"",
+        "mongoose":">= 0.0.3"
+    }
+}

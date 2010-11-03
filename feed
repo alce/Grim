@@ -1,0 +1,114 @@
+/*
+	TODO rewrite this script. As it is now, it downloads the feed twice. once from
+	the original source and once from the local server.
+	Probably keep this sicript but also add a jake file to be used in production:
+	the production task or script will download and parse the feed silently. If it
+	succceds, adds the feed to mongo. If it does not, it reports the error back.
+*/
+
+
+/*globals process __dirname*/
+
+var
+	sys = require('sys')
+,	args = process.ARGV.splice(2, process.ARGV.length);
+
+function help() {
+	var msg = "Add a news source to test server and data file\n";
+	msg += "USAGE: feed <url> <name>\n";
+	sys.puts(msg);
+	process.exit();
+}
+
+if (args.length != 2) help();
+
+/********************************************************************/
+
+var 
+  fs = require('fs')
+, http = require('http')
+, path = require('path')
+, spawn = require('child_process').spawn
+, Crawler = require('./lib/crawler')
+, Parser = require('./lib/parser')
+, Iconv = require('iconv').Iconv;
+
+var
+  sourceName = args[1]
+, sourceURL = args[0]
+, source = {"name": sourceName, "url": sourceURL}
+, crawler = new Crawler();
+
+
+// TODO: change this method's implementation
+function basename() {
+	return sourceName.toLowerCase()
+									 .replace('á', 'a')
+									 .replace('é', 'e')
+									 .replace('í', 'i')
+									 .replace('ó', 'o')
+									 .replace('ú', 'u')
+									 .replace('ñ', 'n')
+									 .split(' ')
+									 .join('_') + '.xml';
+}
+
+
+// TODO: do not hard code the encoding in the sources list, get it from the document itself
+// if I cannot find it, assume UTF-8
+function parseFeed() {
+	var client = http.createClient(1234, 'localhost');
+	var path = '/' + basename();
+	var request = client.request('GET', path, {'host' : 'localhost'});
+	request.on("response", function (response) {
+		var body = "";
+	
+		response.on("data", function(chunk) {
+			body += chunk;
+		});
+	
+		response.on("end", function() {
+			return  new Parser(body, sourceName);
+		});
+	});
+	
+	request.end();
+	process.exit();
+}
+
+function addSource() {
+	fs.readFile('lib/data.js', 'utf-8', function(err, data) {
+		
+		var 
+			source = { name: sourceName, url: sourceURL }
+		, sToken = '//^*s'
+		, localSource = {name: sourceName, url: 'http://localhost:1234/' + basename() }
+		, lsToken = '//^*ls';
+		
+		var 
+			n = data.
+					replace(sToken, ',' + JSON.stringify(source)      +'\n\t\t' + sToken).
+		      replace(lsToken,',' + JSON.stringify(localSource) +'\n\t\t' + lsToken);
+		
+		fs.writeFile('lib/data.js', n, function(err) {
+			sys.puts('Sources added to data file');
+			parseFeed();
+		});
+	});
+}
+
+var filePath = __dirname + '/tests/server/views/' + basename();
+
+crawler.fetchHeadlines(source, false, function(xml) {
+	path.exists(filePath, function(exists) {
+		if (!exists) {
+			fs.writeFile(filePath, xml, function(err) {
+				sys.puts(sourceName + ' downloaded');
+			});
+			addSource();
+		} else {
+			sys.puts('File already exists');
+			process.exit();
+		}
+	});
+});

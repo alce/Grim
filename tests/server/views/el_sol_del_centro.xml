@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+<atom:link href="http://www.oem.com.mx/oem/rss/rss_mexico.xml" rel="self" type="application/rss+xml" />
+<title>OEM en Línea - México</title>
+<link>http://www.oem.com.mx/elsoldemexico/mexico.aspx</link>
+<description>Usted se enterará oportuna, objetiva y verazmente de lo que ocurre en nuestro país, gracias a la información del equipo de reporteros de OEM</description> 
+<item>
+<title>Enfrentamiento entre militares y sicarios deja 25 muertos en Nuevo León</title>
+<link>http://www.oem.com.mx/elsoldemexico/notas/n1768405.htm</link>
+<guid>http://www.oem.com.mx/elsoldemexico/notas/n1768405.htm</guid>
+<description>Tras irrumpir en un campo de entrenamiento de sicarios localizado cerca de Monterrey, elementos del Ejército sostuvieron un enfrentamiento que dejó 25 muertos.</description>
+</item>
+<item>
+<item>
+</channel>
+</rss>

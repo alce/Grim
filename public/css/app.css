@@ -1,0 +1,79 @@
+html, body {
+  font-size:90%;
+}
+
+#container {
+  width: 700px;
+  margin: 0 auto;
+}
+
+p {
+  margin:0;
+}
+
+#headline {
+  height:120px;
+}
+
+h1, h2 {
+  text-align:center;
+}
+
+h1 {
+  font-size: 3em;
+  margin-bottom: 5px;
+  color:green;
+}
+
+h2 {
+  margin-top:5px;
+  color:#ccc;
+}
+
+#stats {
+  width:430px;
+  margin: 15px auto;
+}
+
+p.count {
+  font-size:3em;
+  font-weight:bold;
+}
+
+p#total {
+  color:green;
+}
+
+p#grim_count {
+  color: red;
+}
+
+.stat {
+  border:solid 1px #ddd;
+  float:left;
+  width:130px;
+  text-align:center;
+  margin-right:10px;
+  background-color:#f5f5f5;
+  padding:10px 0;
+  -moz-border-radius:5px;
+  border-radius: 5px;
+  
+}
+
+#canvas {
+  margin:40px auto;
+}
+
+
+
+.clear {
+  clear:both;
+}
+
+
+#sources ul {
+  font-size:0.9em;
+  list-style-type: none;
+  padding:0;
+}

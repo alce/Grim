@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?><rss version="2.0">
+	<channel>
+		<title><![CDATA[aguasdigital.com - Información General]]></title>
+		<description> El diario joven </description>
+		<link> http://www.aguasdigital.com/ </link>
+		<lenguage>es-MX</lenguage>
+		<image>                                                                         
+			<title>aguasdigital.com</title>                             
+			<url>http://www.aguasdigital.com/imagenes/cabezal1.jpg</url>                            
+			<link>http://www.aguasdigital.com/</link>                                      
+			<width>218</width>                                                              
+			<height>33</height>                                                             	
+		</image>
+
+				<item>
+			<title><![CDATA[Arraigan por 40 días a ’La Barbie’ en Centro de Mando de PF]]></title>
+			<description><![CDATA[México / Notimex - Un juez federal penal especializado arraigó por 40 días a Edgar Valdez Villarreal, alias ’La Barbie’, por lo que la madrugada de es]]></description>
+
+			<pubDate>2010-09-04 12:54:37</pubDate>
+			<link> http://www.aguasdigital.com/alerta/leer.php?idnota=24739</link>
+		</item>
+
+			</channel>
+</rss>
